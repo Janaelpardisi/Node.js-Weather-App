@@ -36,8 +36,8 @@ A beautiful and modern weather application that provides real-time weather infor
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/weatherapp.git
-   cd weatherapp
+   git clone https://github.com/Janaelpardisi/Node.js-Weather-App.git
+   cd Node.js-Weather-App
    ```
 
 2. **Install dependencies**
