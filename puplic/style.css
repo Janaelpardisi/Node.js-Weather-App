@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%),
+                url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=1600') center/cover;
+    background-blend-mode: overlay;
+}
+
+/* Main Weather Card */
+.weather-card {
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 40px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.weather-icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.header h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Input Section */
+.input-section {
+    margin-bottom: 30px;
+}
+
+.city-input {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.city-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.city-input:focus {
+    outline: none;
+    border-color: #00BCD4;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.get-weather-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #00BCD4, #008ba3);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+}
+
+.get-weather-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
+}
+
+.get-weather-btn:active {
+    transform: translateY(0);
+}
+
+/* Loading Spinner */
+.loading {
+    text-align: center;
+    padding: 30px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(0, 188, 212, 0.2);
+    border-top: 4px solid #00BCD4;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error {
+    background: rgba(244, 67, 54, 0.2);
+    border: 2px solid rgba(244, 67, 54, 0.5);
+    color: #ff6b6b;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Results Section */
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.result-card {
+    background: rgba(30, 30, 30, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.result-card:hover {
+    background: rgba(30, 30, 30, 0.8);
+    border-color: #00BCD4;
+    transform: translateX(5px);
+}
+
+.result-card .icon {
+    font-size: 28px;
+    color: #00BCD4;
+    min-width: 35px;
+    text-align: center;
+}
+
+.result-card .info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.result-card .label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.result-card .value {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .weather-card {
+        padding: 30px 20px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .weather-icon {
+        font-size: 50px;
+    }
+}
